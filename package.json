@@ -1,0 +1,89 @@
+{
+  "name": "tracapi",
+  "version": "1.0.1",
+  "description": "Effortlessly let HTML elements observe, follow, synchronize with, and react to other HTML elements. A framework-agnostic, zero-dependency tracking engine built on native browser APIs.",
+  "type": "module",
+  "main": "./dist/tracapi.cjs",
+  "module": "./dist/tracapi.js",
+  "unpkg": "./dist/tracapi.umd.js",
+  "jsdelivr": "./dist/tracapi.umd.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/tracapi.js",
+      "require": "./dist/tracapi.cjs",
+      "default": "./dist/tracapi.js"
+    },
+    "./utils": {
+      "types": "./dist/types/utils/index.d.ts",
+      "import": "./dist/tracapi.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node node_modules/rollup/dist/bin/rollup -c rollup.config.js && node scripts/minify.cjs",
+    "build:types": "node node_modules/typescript/bin/tsc -p tsconfig.build.json",
+    "check": "node node_modules/typescript/bin/tsc --noEmit",
+    "test": "node node_modules/vitest/vitest.mjs run",
+    "test:watch": "node node_modules/vitest/vitest.mjs",
+    "test:coverage": "node node_modules/vitest/vitest.mjs run --coverage",
+    "benchmark": "node benchmarks/benchmark.js",
+    "dev": "node node_modules/vite/bin/vite.js examples/vanilla",
+    "docs:serve": "node node_modules/vite/bin/vite.js docs",
+    "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "prepublishOnly": "npm run check && npm test && npm run build"
+  },
+  "keywords": [
+    "html",
+    "dom",
+    "tracker",
+    "tracking",
+    "intersection",
+    "collision",
+    "position",
+    "transform",
+    "resize",
+    "mutation",
+    "observer",
+    "performance",
+    "framework-agnostic"
+  ],
+  "author": "HTML Object Tracker Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rehanasharmin/tracapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rehanasharmin/tracapi/issues"
+  },
+  "homepage": "https://github.com/Rehanasharmin/tracapi#readme",
+  "engines": {
+    "node": ">=16"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.12.12",
+    "@vitest/coverage-v8": "^1.6.0",
+    "jsdom": "^24.1.0",
+    "prettier": "^3.2.5",
+    "rollup": "^4.18.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "terser": "^5.31.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.12",
+    "vitest": "^1.6.0"
+  }
+}
